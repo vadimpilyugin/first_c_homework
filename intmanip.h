@@ -1,3 +1,8 @@
+#ifndef FOO_H_   /* Include guard */
+#define FOO_H_
+
+// коды возврата
+#define SUCCESS 0
 #define ERROR -1
 
 // читает последнее число из файла с дескриптором fd
@@ -16,4 +21,6 @@ int read_last_int(int fd);
 // файл должен быть открыт на запись в режиме O_APPEND
 // число должно быть положительным
 // при ошибке возвращает ERROR
-void write_incremented_int(int fd, int last_int);
+int write_incremented_int(int fd, int last_int);
+
+#endif
