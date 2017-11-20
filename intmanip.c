@@ -25,14 +25,18 @@ static void my_perror (const char *msg) {
 }
 
 int get_last_int (char *str, size_t len) {
-	printf("Debug: str=<%s>, len=%zu\n", str, len);
+	#if DEBUG
+		printf("Debug: str=<%s>, len=%zu\n", str, len);
+	#endif
 	// находим позицию первой цифры последнего числа
 	int pos = find_second_last (str, len, EOL) + 1;
 	// убираем последний \n
 	str[len-1] = ZERO_BYTE;
 	// читаем число
 	int last_int = atoi (str+pos);
-	printf("Debug: last_int=%d\n", last_int);
+	#if DEBUG
+		printf("Debug: last_int=%d\n", last_int);
+	#endif
 	return last_int;
 }
 
