@@ -19,8 +19,7 @@
 #define MAX_CYCLES 1000
 
 static void my_perror(const char *msg) {
-  fprintf(stderr, "%s\n", msg);
-  fprintf(stderr, "%s\n", strerror(errno));
+  fprintf(stderr, "%s: %s\n", msg, strerror(errno));
 }
 
 void release_lock(int fd) {
@@ -36,7 +35,7 @@ int main () {
   // дескриптор открытого файла
   int fd;
   // если открытие файла не удалось
-  if ((fd = open (fn, O_RDWR|O_APPEND)) < 0) {
+  if ((fd = open (fn, O_RDWR|O_APPEND|O_CREAT, 0777)) < 0) {
     // выходим из программы
     my_perror("open не удался");
     return SUCCESS;
